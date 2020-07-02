@@ -576,8 +576,9 @@ int main(int argc, char **argv)
 			}
 
 			printf("[");
-			fwrite(map, 1, region_info.size > 16 ? 16 :
-						region_info.size, stdout);
+                        int z;
+                  	for (z = 0; z < 16; z++)
+                 		printf("%02x ", *(unsigned char *)(map + z));
 			printf("]\n");
 			munmap(map, (size_t)region_info.size);
 		}
